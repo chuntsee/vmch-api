@@ -25,7 +25,9 @@ jsonclasses_integrate(app, cors={
 @app.get('/statements')
 async def statements() -> Response:
     return data(await Statement.find())
-
+@app.route("/")
+def hello():
+    return "<h1 style='color:blue'>Hello There!</h1>"
 
 @app.get('/statements/<id>')
 async def statement(id: str) -> Response:
@@ -73,3 +75,6 @@ async def update_item(id: str) -> Response:
 @app.delete('/items/<id>')
 async def delete_item(id: str) -> Response:
     return empty((await Item.id(id)).delete())
+
+if __name__ == "__main__":
+	app.run(host='0.0.0.0')
