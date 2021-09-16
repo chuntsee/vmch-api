@@ -27,7 +27,7 @@ async def statements() -> Response:
     return data(await Statement.find())
 @app.route("/")
 def hello():
-    return "<h1 style='color:blue'>Hello There!</h1>"
+    return "<h1 style='color:blue'>Hello Donnie</h1>"
 
 @app.get('/statements/<id>')
 async def statement(id: str) -> Response:
