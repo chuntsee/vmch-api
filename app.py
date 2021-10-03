@@ -31,7 +31,7 @@ def hello():
 
 @app.get('/statements/<id>')
 async def statement(id: str) -> Response:
-    return data(await Statement.id(id))
+    return data(await Statement.id(id).include('items'))
 
 
 @app.post('/statements')
@@ -50,7 +50,7 @@ async def delete_statement(id: str) -> Response:
 
 @app.get('/statements/userid/<id>')
 async def user_statements(id: str) -> Response:
-    return data(await Statement.find(user_id=id))
+    return data(await Statement.find(user_id=id).include('items'))
 
 @app.get('/items')
 async def items() -> Response:
