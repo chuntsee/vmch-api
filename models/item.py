@@ -4,8 +4,17 @@ from jsonclasses import jsonclass, types
 from jsonclasses_pymongo import pymongo, BaseObject
 if TYPE_CHECKING:
     from models.statement import Statement
+
+
 @pymongo
 @jsonclass
 class Item(BaseObject):
-    name: str = types.str.required
-    price: int = types.int.required
+    purchase_date: datetime = types.datetime.required
+    ref_no: int = types.int.required
+    description: str = types.str.required
+    days: int = types.int.required
+    rate: int = types.int.required
+    amount: int = types.int.required
+    balance: int = types.int.required
+    statement: Statement = types.instanceof('Statement').linkto.required
+
